@@ -156,6 +156,21 @@ body {
   border-radius: 100;
 }
 
+.colors {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(8, 32px);
+  gap: 8px;
+}
+
+.color {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #20c997;
+  cursor: copy;
+}
+
 .tool-title {
   display: flex;
   align-items: center;
@@ -173,21 +188,6 @@ body {
   font-size: 18px;
   color: #495057;
   margin-bottom: 12px;
-}
-
-.colors {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.color {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background-color: #20c997;
-  cursor: copy;
 }
 
 .picker {

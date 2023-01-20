@@ -1,1 +1,1 @@
-#Color tools | chrome extension
+# Color tools | chrome extension

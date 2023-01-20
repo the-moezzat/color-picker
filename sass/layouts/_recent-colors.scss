@@ -1,0 +1,15 @@
+.colors {
+  list-style: none;
+
+  display: grid;
+  grid-template-columns: repeat(8, 32px);
+  gap: 8px;
+}
+
+.color {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #20c997;
+  cursor: copy;
+}
