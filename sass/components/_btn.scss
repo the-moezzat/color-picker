@@ -1,0 +1,35 @@
+.btn {
+  cursor: pointer;
+  &--main {
+    background-color: $color-main;
+    color: $color-main-white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba($color: $color-main, $alpha: 0.4);
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $color-main-dark;
+    }
+  }
+
+  &--action {
+    @extend .center;
+
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    width: 30px;
+    height: 30px;
+
+    font-size: 1.6rem;
+    color: $color-gray;
+
+    &:hover {
+      background-color: #ced4da;
+    }
+  }
+}

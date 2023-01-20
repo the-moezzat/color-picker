@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/phosphor-icons"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="/script.js" defer type="module"></script>
+  <script src="https://unpkg.com/phosphor-icons"></script>
+  <title>picker nav</title>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="extension">
+      <ul class="nav nav--main">
+        <li class="nav-indicator"><span></span></li>
+        <li class="nav-item nav-item--active"><i class="ph-eyedropper-fill nav-icon"></i></li>
+        <li class="nav-item"><i class="ph-swatches-fill nav-icon"></i></li>
+        <li class="nav-item"><i class="ph-circle-half-fill nav-icon"></i></li>
+        <li class="nav-item"><i class="ph-intersect-fill nav-icon"></i></li>
+        <li class="nav-item"><i class="ph-cardholder-fill nav-icon"></i></li>
+        <li class="nav-item"><i class="ph-sliders-horizontal-fill nav-icon"></i></li>
+      </ul>
+
+      <div class="tool">
+        <div class="tool-title">
+          <h3 class="tool-heading">Color picker</h3>
+          <button class="btn btn--main eye-drop"><span class="btn-text">pick
+              a color</span> </button>
+        </div>
+
+        <div id="picker" class="picker"></div>
+
+        <div class="center">
+          <ul class="nav nav--secondary">
+            <li class="nav-indicator"><span></span></li>
+            <li class="nav-item nav-item--active"> <span>HEX</span> </li>
+            <li class="nav-item"><span> RGB </span></li>
+            <li class="nav-item"><span> HSL </span></li>
+            <li class="nav-item"><span> HSV </span></li>
+          </ul>
+        </div>
+
+        <div class="color-code mb-small">
+          <div class="color-code-type">Hex</div>
+          <span class="divider"></span>
+          <div class="color-code-value">#15a65f</div>
+          <button class="color-code-btn btn btn--action"><i class="ph-copy-simple "></i></button>
+        </div>
+        <div class="recent-color">
+          <h2 class="heading-secondary">Recent colors</h2>
+          <ul class="colors">
+            <li class="color" data-color="#ffffff"><span></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
