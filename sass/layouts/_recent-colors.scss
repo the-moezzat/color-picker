@@ -4,12 +4,33 @@
   display: grid;
   grid-template-columns: repeat(8, 32px);
   gap: 8px;
-}
 
-.color {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background-color: #20c997;
-  cursor: copy;
+  .color {
+    cursor: copy;
+    position: relative;
+
+    span {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    &::after {
+      content: "";
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url(../assets/img/transparent-small.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      z-index: 1;
+
+      border-radius: 8px;
+    }
+  }
 }

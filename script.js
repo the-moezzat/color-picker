@@ -9,6 +9,7 @@ const copyBtn = codeBox.querySelector(".color-code-btn");
 
 const state = {
   currentColor: "#ffffff",
+  activeEl: "",
   colorValueType: "hexString",
   tap: "color picker",
   recentColors: [],
@@ -46,7 +47,14 @@ navigators.forEach((nav) => {
   });
 });
 const colorEl = (color) => {
-  return `<li class="color" data-color="${color}" style="background-color: ${color}"><span></span></li>`;
+  const html = document.createElement("li");
+  const span = document.createElement("span");
+  span.classList.add("color-box");
+  html.classList.add("color");
+  html.dataset.color = color;
+  span.style.backgroundColor = color;
+  html.insertAdjacentElement("afterbegin", span);
+  return html;
 };
 
 const colorPicker = new iro.ColorPicker("#picker", {
@@ -79,12 +87,19 @@ eyeDropper.addEventListener("click", (e) => {
   const picker = new EyeDropper();
 
   picker.open().then(({ sRGBHex: color }) => {
-    state.recentColors.push(color);
-    colors.insertAdjacentHTML("afterbegin", colorEl(color));
+    const el = colors.insertAdjacentElement("afterbegin", colorEl(color));
 
+    const colorObj = {
+      colorEl: el,
+      color: color,
+    };
+
+    state.recentColors.push(colorObj);
+    state.activeEl = el;
+
+    console.log(state);
     state.currentColor = color;
     colorPicker.color.hexString = color;
-    console.log(state);
 
     colorCode.textContent = color;
   });
@@ -96,8 +111,27 @@ copyBtn.addEventListener("click", function (e) {
   setTimeout(() => {
     colorCode.textContent = state.currentColor;
   }, 500);
+  console.log(state.activeEl);
 });
 
 colorPicker.on("color:change", (color) => {
   colorCode.textContent = color[state.colorValueType];
+  changeActiveEl(color);
+});
+
+function changeActiveEl(color) {
+  state.activeEl.dataset.color = color.rgbaString;
+  state.activeEl.querySelector("span").style.backgroundColor = color.rgbaString;
+}
+
+colors.addEventListener("click", function (e) {
+  const target = e.target;
+
+  if (!target.classList.contains("color-box")) return;
+
+  const colorEl = target.closest(".color");
+
+  state.activeEl = colorEl;
+  state.currentColor = colorEl.dataset.color;
+  colorPicker.color.rgbaString = colorEl.dataset.color;
 });
