@@ -27,9 +27,18 @@
 
     font-size: 1.6rem;
     color: $color-gray;
+    transition: all 0.3s;
 
     &:hover {
       background-color: #ced4da;
     }
+  }
+
+  &--tertiary {
+    background-color: transparent;
+    border: none;
+    color: $color-accent;
+    font-size: 1.6rem;
+    font-weight: 600;
   }
 }

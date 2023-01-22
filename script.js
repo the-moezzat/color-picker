@@ -5,10 +5,13 @@ const eyeDropper = document.querySelector(".eye-drop");
 const colors = document.querySelector(".colors");
 const codeBox = document.querySelector(".color-code");
 const colorCode = codeBox.querySelector(".color-code-value");
+const colorType = codeBox.querySelector(".color-code-type");
 const copyBtn = codeBox.querySelector(".color-code-btn");
+const clearRecent = document.querySelector(".clear-recent-colors");
+const colorValueNav = document.querySelector(".color-code-toggle");
 
 const state = {
-  currentColor: "#ffffff",
+  currentColor: new iro.Color(),
   activeEl: "",
   colorValueType: "hexString",
   tap: "color picker",
@@ -53,6 +56,7 @@ const colorEl = (color) => {
   html.classList.add("color");
   html.dataset.color = color;
   span.style.backgroundColor = color;
+  html.style.color = color;
   html.insertAdjacentElement("afterbegin", span);
   return html;
 };
@@ -98,7 +102,7 @@ eyeDropper.addEventListener("click", (e) => {
     state.activeEl = el;
 
     console.log(state);
-    state.currentColor = color;
+    state.currentColor.set(color);
     colorPicker.color.hexString = color;
 
     colorCode.textContent = color;
@@ -106,15 +110,16 @@ eyeDropper.addEventListener("click", (e) => {
 });
 
 copyBtn.addEventListener("click", function (e) {
-  navigator.clipboard.writeText(state.currentColor);
+  navigator.clipboard.writeText(state.currentColor[state.colorValueType]);
   colorCode.textContent = "Copied";
   setTimeout(() => {
-    colorCode.textContent = state.currentColor;
+    colorCode.textContent = state.currentColor[state.colorValueType];
   }, 500);
   console.log(state.activeEl);
 });
 
 colorPicker.on("color:change", (color) => {
+  if (!state.activeEl) return;
   colorCode.textContent = color[state.colorValueType];
   changeActiveEl(color);
 });
@@ -131,7 +136,29 @@ colors.addEventListener("click", function (e) {
 
   const colorEl = target.closest(".color");
 
+  state.activeEl
+    .querySelector(".color-box")
+    .classList.remove("color-box--active");
+  colorEl.querySelector(".color-box").classList.add("color-box--active");
+  console.log(colorEl);
   state.activeEl = colorEl;
-  state.currentColor = colorEl.dataset.color;
+  state.currentColor.set(colorEl.dataset.color);
   colorPicker.color.rgbaString = colorEl.dataset.color;
+});
+
+clearRecent.addEventListener("click", (e) => {
+  state.recentColors = [];
+  colors.innerHTML = "";
+});
+
+chrome.storage;
+
+colorValueNav.addEventListener("click", function (e) {
+  const target = e.target;
+
+  if (!target.classList.contains("nav-item")) return;
+
+  state.colorValueType = target.dataset.type;
+  colorCode.textContent = state.currentColor[state.colorValueType];
+  colorType.textContent = target.textContent;
 });

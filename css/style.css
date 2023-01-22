@@ -26,6 +26,10 @@ body {
   background-color: #f0f2f5;
 }
 
+.tool {
+  padding: 0 8px;
+}
+
 .center, .btn--action {
   display: flex;
   align-items: center;
@@ -34,6 +38,14 @@ body {
 
 .mb-small {
   margin-bottom: 8px;
+}
+
+.mb-md {
+  margin-bottom: 16px;
+}
+
+.mb-lg {
+  margin-bottom: 24px;
 }
 
 .btn {
@@ -60,10 +72,18 @@ body {
   width: 30px;
   height: 30px;
   font-size: 1.6rem;
-  color: #495057;
+  color: hsl(207deg, 5%, 45%);
+  transition: all 0.3s;
 }
 .btn--action:hover {
   background-color: #ced4da;
+}
+.btn--tertiary {
+  background-color: transparent;
+  border: none;
+  color: #fa5252;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 .nav {
@@ -106,7 +126,7 @@ body {
 .nav-item {
   margin-bottom: -4px;
   z-index: 2;
-  color: #495057;
+  color: hsl(207deg, 5%, 45%);
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -137,7 +157,7 @@ body {
 .color-code-type {
   font-size: 1.6rem;
   font-weight: 600;
-  color: #495057;
+  color: hsl(207deg, 5%, 45%);
 }
 .color-code-value {
   font-size: 1.6rem;
@@ -163,16 +183,33 @@ body {
   gap: 8px;
 }
 .colors .color {
-  cursor: copy;
+  border-radius: 10px;
+  cursor: pointer;
   position: relative;
+  transition: all 0.3s;
 }
-.colors .color span {
+.colors .color .color-box {
+  border-radius: 10px;
   width: 32px;
   height: 32px;
-  border-radius: 8px;
   display: block;
   position: relative;
   z-index: 2;
+}
+.colors .color .color-box--active {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+.colors .color .color-box--active::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 40%;
+  z-index: 100;
 }
 .colors .color::after {
   content: "";
@@ -181,18 +218,17 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  border-radius: 10px;
   background-image: url(../assets/img/transparent-small.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 1;
-  border-radius: 8px;
 }
 
 .tool-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 15px;
 }
 
 .tool-heading {
@@ -204,7 +240,6 @@ body {
 .heading-secondary {
   font-size: 18px;
   color: #495057;
-  margin-bottom: 12px;
 }
 
 .picker {
