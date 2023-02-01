@@ -21,11 +21,14 @@ body {
 }
 
 .extension {
+  width: 350px;
   padding: 8px;
   border-radius: 8px;
   background-color: #f0f2f5;
 }
 
 .tool {
-  padding: 0 8px;
+  width: 100%;
+  flex: 1 0 auto;
+  padding: 0 24px 0 8px;
 }

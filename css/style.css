@@ -21,13 +21,16 @@ body {
 }
 
 .extension {
+  width: 350px;
   padding: 8px;
   border-radius: 8px;
   background-color: #f0f2f5;
 }
 
 .tool {
-  padding: 0 8px;
+  width: 100%;
+  flex: 1 0 auto;
+  padding: 0 24px 0 8px;
 }
 
 .center, .btn--action {
@@ -103,7 +106,7 @@ body {
 .nav--main .nav-indicator {
   border-radius: 8px;
 }
-.nav--main .nav-item {
+.nav--main .nav-item-link {
   padding: 4px 18px;
 }
 .nav--secondary {
@@ -116,10 +119,10 @@ body {
 .nav--secondary .nav-indicator {
   border-radius: 6px;
 }
-.nav--secondary .nav-item {
+.nav--secondary .nav-item-link {
   padding: 3px 14px;
 }
-.nav--secondary .nav-item span {
+.nav--secondary .nav-item-link span {
   position: relative;
   top: -2px;
 }
@@ -133,8 +136,12 @@ body {
 .nav-item--active {
   color: #212529;
 }
-.nav-item:last-child {
-  margin-left: auto;
+.nav-item-link {
+  display: inline-block;
+}
+.nav-item-link:link, .nav-item-link:visited {
+  text-decoration: none;
+  color: currentColor;
 }
 .nav-indicator {
   background-color: #efefef;
@@ -223,6 +230,16 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 1;
+}
+
+.tools {
+  width: 350px;
+  display: flex;
+  overflow: scroll;
+  gap: 8px;
+}
+.tools::-webkit-scrollbar {
+  display: none;
 }
 
 .tool-title {

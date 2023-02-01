@@ -16,7 +16,7 @@
       border-radius: 8px;
     }
 
-    .nav-item {
+    .nav-item-link {
       padding: 4px 18px;
     }
   }
@@ -32,7 +32,7 @@
       border-radius: 6px;
     }
 
-    .nav-item {
+    .nav-item-link {
       padding: 3px 14px;
 
       span {
@@ -53,8 +53,17 @@
       color: $color-gray-dark;
     }
 
-    &:last-child {
-      margin-left: auto;
+    // &:last-child {
+    //   margin-left: auto;
+    // }
+
+    &-link {
+      display: inline-block;
+      &:link,
+      &:visited {
+        text-decoration: none;
+        color: currentColor;
+      }
     }
   }
 
