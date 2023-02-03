@@ -16,6 +16,12 @@
     }
   }
 
+  .icon-btn {
+    width: 18px;
+    height: 18px;
+    fill: hsl(207deg, 5%, 45%);
+  }
+
   &--action {
     @extend .center;
 

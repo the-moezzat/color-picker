@@ -9,12 +9,17 @@ const colorType = codeBox.querySelector(".color-code-type");
 const copyBtn = codeBox.querySelector(".color-code-btn");
 const clearRecent = document.querySelector(".clear-recent-colors");
 const colorValueNav = document.querySelector(".color-code-toggle");
+const toolContainers = document.querySelectorAll(".tool");
 
 const state = {
   currentColor: new iro.Color(),
-  activeEl: "",
+  activeColorEl: "",
   colorValueType: "hexString",
-  tap: "color picker",
+  tab: {
+    name: "color-picker",
+    tabEl: document.querySelector(`.tool[data-type="color-picker"]`),
+    navEl: document.querySelector(`.nav-item[data-type="color-picker"]`),
+  },
   recentColors: [],
 };
 
@@ -98,10 +103,19 @@ eyeDropper.addEventListener("click", (e) => {
       color: color,
     };
 
-    state.recentColors.push(colorObj);
-    state.activeEl = el;
+    state.activeColorEl
+      ? state.activeColorEl
+          .querySelector(".color-box")
+          .classList.remove("color-box--active")
+      : "";
 
-    console.log(state);
+    state.recentColors.push(colorObj);
+    state.activeColorEl = el;
+
+    state.activeColorEl
+      .querySelector(".color-box")
+      .classList.add("color-box--active");
+
     state.currentColor.set(color);
     colorPicker.color.hexString = color;
 
@@ -115,18 +129,19 @@ copyBtn.addEventListener("click", function (e) {
   setTimeout(() => {
     colorCode.textContent = state.currentColor[state.colorValueType];
   }, 500);
-  console.log(state.activeEl);
 });
 
 colorPicker.on("color:change", (color) => {
-  if (!state.activeEl) return;
   colorCode.textContent = color[state.colorValueType];
-  changeActiveEl(color);
+  state.currentColor = color;
+  if (!state.activeColorEl) return;
+  changeActiveColorEl(color);
 });
 
-function changeActiveEl(color) {
-  state.activeEl.dataset.color = color.rgbaString;
-  state.activeEl.querySelector("span").style.backgroundColor = color.rgbaString;
+function changeActiveColorEl(color) {
+  state.activeColorEl.dataset.color = color.rgbaString;
+  state.activeColorEl.querySelector("span").style.backgroundColor =
+    color.rgbaString;
 }
 
 colors.addEventListener("click", function (e) {
@@ -136,12 +151,12 @@ colors.addEventListener("click", function (e) {
 
   const colorEl = target.closest(".color");
 
-  state.activeEl
+  state.activeColorEl
     .querySelector(".color-box")
     .classList.remove("color-box--active");
   colorEl.querySelector(".color-box").classList.add("color-box--active");
-  console.log(colorEl);
-  state.activeEl = colorEl;
+
+  state.activeColorEl = colorEl;
   state.currentColor.set(colorEl.dataset.color);
   colorPicker.color.rgbaString = colorEl.dataset.color;
 });
@@ -162,3 +177,38 @@ colorValueNav.addEventListener("click", function (e) {
   colorCode.textContent = state.currentColor[state.colorValueType];
   colorType.textContent = target.textContent;
 });
+
+// Observer function
+const options = {
+  root: document.querySelector(".tools"),
+  rootMargin: "0px",
+  threshold: 0.8,
+};
+
+const observer = new IntersectionObserver((entries) => {
+  const intersectionData = entries[0];
+  const nav = document.querySelector(".nav--main");
+
+  if (!intersectionData.isIntersecting) return;
+  const tabName = intersectionData.target.dataset.type;
+
+  state.tab.navEl.classList.remove("nav-item--active");
+
+  state.tab = {
+    name: "color-picker",
+    tabEl: document.querySelector(`.tool[data-type="${tabName}"]`),
+    navEl: document.querySelector(`.nav-item[data-type="${tabName}"]`),
+  };
+
+  changeIndicatorPosition(
+    nav.querySelector(".nav-indicator"),
+    state.tab.navEl,
+    nav
+  );
+
+  state.tab.navEl.classList.add("nav-item--active");
+
+  console.log(intersectionData.target.dataset.type, state);
+}, options);
+
+toolContainers.forEach((tool) => observer.observe(tool));

@@ -5,105 +5,151 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/phosphor-icons"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/phosphor-icons"></script>
 
   <script src="./src/script.js" defer type="module"></script>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./css/style.css">
 
   <title>picker nav</title>
 
 </head>
 
 <body>
-  <div class="container">
-    <div class="extension">
-      <ul class="nav nav--main">
-        <li class="nav-indicator"><span></span></li>
-        <li class="nav-item nav-item--active">
-          <a href="#color-picker" class="nav-item-link"><i class="ph-eyedropper-fill nav-icon"></i></a>
-        </li>
-        <li class="nav-item">
-          <a href="#color-pallete" class="nav-item-link"><i class="ph-swatches-fill nav-icon"></i></a>
-        </li>
-        <li class="nav-item">
-          <a href="#color-shades" class="nav-item-link"><i class="ph-circle-half-fill nav-icon"></i></a>
-        </li>
-        <li class="nav-item">
-          <a href="#contrast-checker" class="nav-item-link"><i class="ph-intersect-fill nav-icon"></i></a>
-        </li>
-        <li class="nav-item">
-          <a href="#color-groubs" class="nav-item-link"><i class="ph-cardholder-fill nav-icon"></i></a>
-        </li>
-        <li class="nav-item">
-          <a href="#color-setting" class="nav-item-link"><i class="ph-sliders-horizontal-fill nav-icon"></i></a>
-        </li>
-      </ul>
-      <main class="tools">
-        <div class="tool" id="color-picker">
-          <div class="tool-title mb-md">
-            <h3 class="tool-heading">Color picker</h3>
-            <button class="btn btn--main eye-drop"><span class="btn-text">pick
-                a color</span> </button>
-          </div>
+  <div class="extension">
+    <ul class="nav nav--main">
+      <li class="nav-indicator"><span></span></li>
+      <li class="nav-item nav-item--active" data-type="color-picker">
+        <a href="#color-picker" class="nav-item-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" class="nav-icon">
+            <rect width="256" height="256" fill="none"></rect>
+            <path
+              d="M224,67.5a35.5,35.5,0,0,0-11.3-25.7c-14-13.2-36.7-12.7-50.6,1.2L140.2,64.9a24.1,24.1,0,0,0-33.2.8l-7,7a16.1,16.1,0,0,0,0,22.6l2.1,2.1L51.7,147.7a40.3,40.3,0,0,0-11,35.8l-9.8,22.4a13.6,13.6,0,0,0,2.9,15.2,15.8,15.8,0,0,0,11.3,4.7,16.3,16.3,0,0,0,6.4-1.3l21-9.2a40.3,40.3,0,0,0,35.8-11l50.3-50.4,2.1,2.1a15.9,15.9,0,0,0,22.6,0l7-7a24.1,24.1,0,0,0,.8-33.2l22.4-22.3A36.2,36.2,0,0,0,224,67.5ZM97,193a24.3,24.3,0,0,1-23.2,6.2,8,8,0,0,0-5.3.4L47,209l9.4-21.5a8,8,0,0,0,.4-5.3A24.3,24.3,0,0,1,63,159l50.4-50.3,33.9,33.9Z">
+            </path>
+          </svg>
+        </a>
+      </li>
+      <li class="nav-item" data-type="color-pallette">
+        <a href="#color-pallete" class="nav-item-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" viewBox="0 0 256 256">
+            <rect width="256" height="256" fill="none"></rect>
+            <path
+              d="M228.2,153,209,100.3a16,16,0,0,0-20.5-9.5l-59.9,21.8,11-62.8a16,16,0,0,0-2.6-12,16.2,16.2,0,0,0-10.3-6.6L71.5,21.5A16.1,16.1,0,0,0,53,34.5L28.8,171.7a45,45,0,0,0,7.7,33.9,43.4,43.4,0,0,0,28.7,17.9,51.6,51.6,0,0,0,6.7.5H212a16,16,0,0,0,16-16V164.3A15.7,15.7,0,0,0,228.2,153ZM72,192a12,12,0,1,1,12-12A12,12,0,0,1,72,192Zm140,16H123.7L212,175.9Zm-98.5-13.3a41,41,0,0,0,1.8-7.1l10.1-56.8,68.6-25,19.1,52.6Z">
+            </path>
+          </svg>
+        </a>
+      </li>
+      <li class="nav-item" data-type="shades-tints">
+        <a href="#color-shades" class="nav-item-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" viewBox="0 0 256 256">
+            <rect width="256" height="256" fill="none"></rect>
+            <path
+              d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24ZM40,128a88.1,88.1,0,0,1,88-88V216A88.1,88.1,0,0,1,40,128Z">
+            </path>
+          </svg>
+        </a>
+      </li>
+      <li class="nav-item" data-type="contrast-checker">
+        <a href="#contrast-checker" class="nav-item-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" viewBox="0 0 256 256">
+            <rect width="256" height="256" fill="none"></rect>
+            <path
+              d="M174.6,81.4a80,80,0,1,0-93.2,93.2,80,80,0,1,0,93.2-93.2ZM32,96A64,64,0,0,1,158,80.1,79.9,79.9,0,0,0,80.1,158,64.2,64.2,0,0,1,32,96ZM160,224a64.2,64.2,0,0,1-62-48.1A79.9,79.9,0,0,0,175.9,98,64,64,0,0,1,160,224Z">
+            </path>
+          </svg>
+        </a>
+      </li>
+      <li class="nav-item" data-type="color-groups">
+        <a href="#color-groubs" class="nav-item-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" viewBox="0 0 256 256">
+            <rect width="256" height="256" fill="none"></rect>
+            <path
+              d="M208,48H48A24.1,24.1,0,0,0,24,72V184a24.1,24.1,0,0,0,24,24H208a24.1,24.1,0,0,0,24-24V72A24.1,24.1,0,0,0,208,48Zm-56.5,76.8a24,24,0,0,1-47,0A16.1,16.1,0,0,0,88.8,112H40V96H216v16H167.2A16.1,16.1,0,0,0,151.5,124.8ZM48,64H208a8,8,0,0,1,8,8v8H40V72A8,8,0,0,1,48,64Z">
+            </path>
+          </svg>
+        </a>
+      </li>
+      <li class="nav-item" data-type="settings">
+        <a href="#color-setting" class="nav-item-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" viewBox="0 0 256 256">
+            <rect width="256" height="256" fill="none"></rect>
+            <path d="M216,164H194.8a28,28,0,0,0-53.6,0H40a8,8,0,0,0,0,16H141.2a28,28,0,0,0,53.6,0H216a8,8,0,0,0,0-16Z">
+            </path>
+            <path d="M40,92H77.2a28,28,0,0,0,53.6,0H216a8,8,0,0,0,0-16H130.8a28,28,0,0,0-53.6,0H40a8,8,0,0,0,0,16Z">
+            </path>
+          </svg>
+        </a>
+      </li>
+    </ul>
+    <main class="tools">
+      <div id="color-picker" class="tool" data-type="color-picker">
+        <div class="tool-title mb-md">
+          <h3 class="tool-heading">Color picker</h3>
+          <button class="btn btn--main eye-drop"><span class="btn-text">pick
+              a color</span> </button>
+        </div>
 
-          <div id="picker" class="picker"></div>
+        <div id="picker" class="picker"></div>
 
-          <div class="center">
-            <ul class="nav nav--secondary  color-code-toggle">
-              <li class="nav-indicator"><span></span></li>
-              <li class="nav-item nav-item--active" data-type="hexString"> HEX </li>
-              <li class="nav-item" data-type="rgbaString"> RGB</li>
-              <li class="nav-item" data-type="hslaString"> HSL</li>
-            </ul>
-          </div>
+        <div class="center">
+          <ul class="nav nav--secondary  color-code-toggle">
+            <li class="nav-indicator"><span></span></li>
+            <li class="nav-item nav-item--active" data-type="hexString"> HEX </li>
+            <li class="nav-item" data-type="rgbaString"> RGB</li>
+            <li class="nav-item" data-type="hslaString"> HSL</li>
+          </ul>
+        </div>
 
-          <div class="color-code mb-lg">
-            <div class="color-code-type">Hex</div>
-            <span class="divider"></span>
-            <div class="color-code-value">#15a65f</div>
-            <button class="color-code-btn btn btn--action"><i class="ph-copy-simple "></i></button>
-          </div>
-          <div class="recent-color">
-            <div class="tool-title mb-small">
-              <h2 class="heading-secondary">Recent colors</h2>
-              <button class="btn btn--tertiary clear-recent-colors">Clear</button>
-            </div>
-            <ul class="colors">
-              <!-- <li class="color" data-color="#15a65f"><span></span></li> -->
-            </ul>
-          </div>
+        <div class="color-code mb-lg">
+          <div class="color-code-type">Hex</div>
+          <span class="divider"></span>
+          <div class="color-code-value">#15a65f</div>
+          <button class="color-code-btn btn btn--action">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-btn" viewBox="0 0 256 256">
+              <rect width="256" height="256" fill="none"></rect>
+              <path
+                d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32Zm-8,128H176V88a8,8,0,0,0-8-8H96V48H208Z">
+              </path>
+            </svg>
+          </button>
         </div>
-        <div id="color-pallete" class="tool">
-          <div class="tool-title mb-md">
-            <h3 class="tool-heading">Color pallette</h3>
+        <div class="recent-color">
+          <div class="tool-title mb-small">
+            <h2 class="heading-secondary">Recent colors</h2>
+            <button class="btn btn--tertiary clear-recent-colors">Clear</button>
           </div>
+          <ul class="colors">
+            <!-- <li class="color" data-color="#15a65f"><span></span></li> -->
+          </ul>
         </div>
-        <div id="color-shades" class="tool">
-          <div class="tool-title mb-md">
-            <h3 class="tool-heading">Shades and tints generator</h3>
-          </div>
+      </div>
+      <div id="color-pallete" class="tool" data-type="color-pallette">
+        <div class="tool-title mb-md">
+          <h3 class="tool-heading">Color pallette</h3>
         </div>
-        <div id="contrast-checker" class="tool">
-          <div class="tool-title mb-md">
-            <h3 class="tool-heading">Contrast checker</h3>
-          </div>
+      </div>
+      <div id="color-shades" class="tool" data-type="shades-tints">
+        <div class="tool-title mb-md">
+          <h3 class="tool-heading">Shades and tints generator</h3>
         </div>
-        <div id="color-groubs" class="tool">
-          <div class="tool-title mb-md">
-            <h3 class="tool-heading">Color groups</h3>
-          </div>
+      </div>
+      <div id="contrast-checker" class="tool" data-type="contrast-checker">
+        <div class="tool-title mb-md">
+          <h3 class="tool-heading">Contrast checker</h3>
         </div>
-        <div id="color-setting" class="tool">
-          <div class="tool-title mb-md">
-            <h3 class="tool-heading">Setting</h3>
-          </div>
+      </div>
+      <div id="color-groubs" class="tool" data-type="color-groups">
+        <div class="tool-title mb-md">
+          <h3 class="tool-heading">Color groups</h3>
         </div>
-      </main>
-    </div>
+      </div>
+      <div id="color-setting" class="tool" data-type="settings">
+        <div class="tool-title mb-md">
+          <h3 class="tool-heading">Setting</h3>
+        </div>
+      </div>
+    </main>
   </div>
 </body>
 

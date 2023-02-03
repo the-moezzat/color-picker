@@ -1,5 +1,6 @@
 .tools {
-  width: 350px;
+  width: 334px;
+  scroll-snap-type: x mandatory;
 
   // scroll-behavior: smooth;
   display: flex;
@@ -9,4 +10,12 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+.tool {
+  width: 100%;
+  flex: 1 0 auto;
+  padding: 0 8px 0 8px;
+
+  scroll-snap-align: center;
 }

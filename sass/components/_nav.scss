@@ -32,7 +32,7 @@
       border-radius: 6px;
     }
 
-    .nav-item-link {
+    .nav-item {
       padding: 3px 14px;
 
       span {
@@ -63,6 +63,12 @@
       &:visited {
         text-decoration: none;
         color: currentColor;
+      }
+
+      .nav-icon {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
       }
     }
   }
