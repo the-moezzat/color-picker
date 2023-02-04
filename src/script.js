@@ -207,8 +207,17 @@ const observer = new IntersectionObserver((entries) => {
   );
 
   state.tab.navEl.classList.add("nav-item--active");
-
-  console.log(intersectionData.target.dataset.type, state);
 }, options);
 
 toolContainers.forEach((tool) => observer.observe(tool));
+
+// Handle Buy me a coffee button
+const bmcBtn = document.querySelectorAll(".bmc");
+
+bmcBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    chrome.tabs.create({
+      url: "https://www.buymeacoffee.com/moezzat",
+    });
+  });
+});
